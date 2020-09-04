@@ -7,9 +7,6 @@
 
 import os
 
-import numpy as np
-import wget
-
 commands = [
     # COMMANDS TO RUN AT START OF SCRIPT
     ["sudo apt update", "sudo apt upgrade"],
@@ -20,19 +17,28 @@ commands = [
         # associate jupyter nb with ipynb
         "python3 -m nbopen.install_xdg",
         #
-        #  create local binary folder and add to path
+        #  add ~/bin to path
         "mkdir /home/$USER/bin",
         'echo export PATH="/home/$USER/bin:$PATH" >>  ~/.bashrc',
         #
         # python-related
         "python3 -m spacy download en",
+        #
+        # symbolic links
+        # nautilus scripts
+        "ln -s ~/bin/vimdiff.py ~/.local/share/nautilus/scripts",
+        # application launchers
+        "ln -s ~/bin/application_launchers/Jupyter\ Notebook.desktop ~/.local/share/applications/Jupyter\ Notebook.desktop",
+        "ln -s ~/bin/application_launchers/Jupyter\ Notebook.desktop ~/.local/share/applications/Jupyter\ Notebook.desktop",
+        # jupyter-gvim integration
+        "ln -s ~/bin/open_vim_in_jupyter.py ~/.ipython/profile_default/startup/open_vim_in_jupyter.py",
     ],
 ]
 
 apt = [
     # TO INSTALL
     [
-        "snapd",
+        # "snapd",
         "git",
         "synaptic",
         "ubuntu_restricted_extras",
@@ -46,13 +52,15 @@ apt = [
         "chktex",  # latex linter
         # "quodlibet",
         "keepassxc",
-        "octave",
-        "pdf-arranger",
-        "vlc",
-        "gnome-tweaks",
-        "krita",
+        # "octave",
+        # "pdf-arranger",
+        # "vlc",
+        # "gnome-tweaks",
         "cmake",
-        "golang",
+        # "golang",
+        "python3-pip",
+        "r-base-core",
+        "exuberant-ctags",
     ],
     # TO REMOVE
     ["gnome-games", "gnome-calculator"],
@@ -94,6 +102,11 @@ pip = [
         "unidecode",
         "pipenv",
         "ibm_db",
+        "jupyter",
+        "jupyterlab",
+        "pynvim",
+        # "jedi-language-server",
+        "python-language-server[all]",
     ],
     # TO REMOVE
     [],
@@ -103,16 +116,16 @@ pip = [
 def main():
 
     pass
-    for com in commands[0]:
+    for hello in commands[0]:
         try:
-            os.system(com)
+            os.system(hello)
         except:
             pass
 
     # install apt packages
     for package in apt[0]:
         try:
-            os.system("sudo apt install " + package)
+            os.system("sudo apt install --yes " + package)
         except:
             pass
 
@@ -152,9 +165,9 @@ def main():
             pass
 
     # run misc commands
-    for com in commands[1]:
+    for hello in commands[1]:
         try:
-            os.system(com)
+            os.system(hello)
         except:
             pass
 
