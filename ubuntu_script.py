@@ -28,7 +28,7 @@ commands = [
         # nautilus scripts
         "ln -s ~/bin/vimdiff.py ~/.local/share/nautilus/scripts",
         # application launchers
-        "ln -s ~/bin/application_launchers/Jupyter\ Notebook.desktop ~/.local/share/applications/Jupyter\ Notebook.desktop",
+        "ln -s ~/bin/application_launchers/Jupyter\ Lab.desktop ~/.local/share/applications/Jupyter\ Lab.desktop",
         "ln -s ~/bin/application_launchers/Jupyter\ Notebook.desktop ~/.local/share/applications/Jupyter\ Notebook.desktop",
         # jupyter-gvim integration
         "ln -s ~/bin/open_vim_in_jupyter.py ~/.ipython/profile_default/startup/open_vim_in_jupyter.py",
